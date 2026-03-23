@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Overview</h2>
         <p>
-          LogIt: TV &amp; Movie Tracker (&ldquo;LogIt&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;) is a household TV and movie tracking app.
+          LogIt: TV &amp; Movie Tracker (&ldquo;LogIt&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;) is a TV and movie tracking app for groups.
           This policy explains what data we collect, how it is stored, and how it is used.
         </p>
       </section>
@@ -16,13 +16,13 @@ export default function PrivacyPolicy() {
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Data We Collect and Store</h2>
         <ul style={{ paddingLeft: 20 }}>
-          <li><strong>Account information:</strong> Your email address and display name, used to identify you within your household group.</li>
+          <li><strong>Account information:</strong> Your email address and display name, used to identify you within your group.</li>
           <li><strong>Watch history:</strong> Titles you log, ratings, notes, watch dates, and status (watching, watched, etc.).</li>
           <li><strong>Netflix viewing history:</strong> If you choose to import it, your Netflix CSV export is stored to enable &ldquo;have I seen this?&rdquo; queries.</li>
           <li><strong>Voice recordings:</strong> When you use voice logging, audio is sent to OpenAI&apos;s Whisper API for transcription. Audio is not stored by us after transcription.</li>
-          <li><strong>Household data:</strong> Your household group name and the display names of members you invite.</li>
+          <li><strong>Group data:</strong> Your group name and the display names of members you invite.</li>
         </ul>
-        <p style={{ marginTop: 12 }}>All data is stored securely in Supabase (PostgreSQL), with row-level security ensuring each household can only access its own data.</p>
+        <p style={{ marginTop: 12 }}>All data is stored securely in Supabase (PostgreSQL), with row-level security ensuring each group can only access its own data.</p>
       </section>
 
       <section style={{ marginBottom: 40 }}>
