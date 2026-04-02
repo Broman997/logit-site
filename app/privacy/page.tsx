@@ -94,7 +94,7 @@ export default function PrivacyPolicy() {
       </section>
 
       <hr style={{ borderColor: '#eee', marginBottom: 32 }} />
-      <p style={{ fontSize: 13, color: '#aaa' }}>&copy; {new Date().getFullYear()} LogIT: TV &amp; Movie Tracker. All rights reserved.</p>
+      <p style={{ fontSize: 13, color: '#aaa' }}>&copy; {new Date().getFullYear()} LogIT: TV &amp; Movie Tracker &mdash; <a href="https://www.logitapp.ca" style={{ color: '#aaa' }}>logitapp.ca</a>. All rights reserved.</p>
     </main>
   );
 }
