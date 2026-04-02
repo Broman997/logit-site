@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
         <p style={{ marginTop: 12 }}>
           LogIT is intended for users aged 13 and older. We do not knowingly collect personal information from children under 13.
           If you believe a child under 13 has provided us with personal information, please contact us at{' '}
-          <a href="mailto:logitapp@gmail.com" style={{ color: '#0070f3' }}>logitapp@gmail.com</a> and we will delete it promptly.
+          <a href="mailto:logittracker@gmail.com" style={{ color: '#0070f3' }}>logittracker@gmail.com</a> and we will delete it promptly.
         </p>
       </section>
 
@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
           If you are a California resident, you have the right to know what personal information we collect, request deletion of your personal information,
           and opt out of the sale of personal information. We do not sell personal information.
           To exercise your rights, contact us at{' '}
-          <a href="mailto:logitapp@gmail.com" style={{ color: '#0070f3' }}>logitapp@gmail.com</a>.
+          <a href="mailto:logittracker@gmail.com" style={{ color: '#0070f3' }}>logittracker@gmail.com</a>.
         </p>
       </section>
 
@@ -89,7 +89,7 @@ export default function PrivacyPolicy() {
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Contact</h2>
         <p>
           Questions or concerns about this privacy policy can be directed to{' '}
-          <a href="mailto:logitapp@gmail.com" style={{ color: '#0070f3' }}>logitapp@gmail.com</a>.
+          <a href="mailto:logittracker@gmail.com" style={{ color: '#0070f3' }}>logittracker@gmail.com</a>.
         </p>
       </section>
 
