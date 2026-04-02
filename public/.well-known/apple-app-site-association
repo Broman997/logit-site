@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "W77XVL58T4.ca.logit.app",
+        "paths": ["/show/*"]
+      }
+    ]
+  }
+}
