@@ -38,8 +38,8 @@ export default function ShowRedirect({
       <p style={{ fontSize: 13, color: '#888', marginBottom: 16, letterSpacing: 1 }}>LOGIT: TV & MOVIE TRACKER</p>
 
       {/* Download buttons — prominent at top */}
-      <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a1a', marginBottom: 12 }}>
-        Track this with your household — free!
+      <p style={{ fontSize: 20, fontWeight: 800, color: '#1a1a1a', marginBottom: 12 }}>
+        Don't have the LogIT app? Download it here!
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginBottom: 24 }}>
         <a href={APP_STORE_URL} style={{
