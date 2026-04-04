@@ -29,28 +29,12 @@ export default function ShowRedirect({
     const deepLink  = `logit://show/${tmdbId}/${type}`;
 
     if (isIOS || isAndroid) {
+      // Try to open the app — if it's installed, universal links will have already
+      // handled this before the page loaded, so this is a fallback for the custom scheme
       window.location.href = deepLink;
-
-      let timer: ReturnType<typeof setTimeout>;
-
-      const onVisibilityChange = () => {
-        // User switched away (app opened) — cancel the store redirect
-        if (document.hidden) clearTimeout(timer);
-      };
-      document.addEventListener('visibilitychange', onVisibilityChange);
-
-      timer = setTimeout(() => {
-        // Only redirect to store if the page is still visible (app didn't open)
-        if (!document.hidden) {
-          setStatus('redirecting');
-          window.location.href = storeUrl;
-        }
-      }, 2000);
-
-      return () => {
-        clearTimeout(timer);
-        document.removeEventListener('visibilitychange', onVisibilityChange);
-      };
+      // Don't auto-redirect to the store — let the user stay on this page
+      // which has the store buttons if they need to download the app
+      setStatus('redirecting');
     } else {
       setStatus('redirecting');
     }
