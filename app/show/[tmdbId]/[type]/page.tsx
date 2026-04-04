@@ -44,6 +44,9 @@ export async function generateMetadata(
   return {
     title,
     description,
+    other: {
+      'apple-itunes-app': `app-id=6760734928, app-argument=${pageUrl}`,
+    },
     openGraph: {
       title,
       description,
