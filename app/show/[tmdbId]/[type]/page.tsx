@@ -1,95 +1,80 @@
-'use client';
+import { Metadata } from 'next';
+import ShowRedirect from './ShowRedirect';
 
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+const TMDB_KEY = process.env.TMDB_API_KEY ?? '';
+const TMDB_BASE = 'https://api.themoviedb.org/3';
+const TMDB_IMG  = 'https://image.tmdb.org/t/p/w500';
+const SITE_URL  = 'https://www.logitapp.ca';
 
-const APP_STORE_URL  = 'https://apps.apple.com/app/id6760734928';
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=ca.logit.app';
+async function fetchShowData(tmdbId: string, type: string) {
+  if (!TMDB_KEY) return null;
+  try {
+    const endpoint = type === 'tv'
+      ? `${TMDB_BASE}/tv/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=videos`
+      : `${TMDB_BASE}/movie/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=videos`;
+    const res = await fetch(endpoint, { next: { revalidate: 3600 } });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const title       = data.name ?? data.title ?? 'Unknown';
+    const overview    = data.overview ?? '';
+    const posterPath  = data.poster_path ?? null;
+    const posterUrl   = posterPath ? `${TMDB_IMG}${posterPath}` : null;
+    const videos      = data.videos?.results ?? [];
+    const trailer     = videos.find((v: any) => v.type === 'Trailer' && v.site === 'YouTube')
+                     ?? videos.find((v: any) => v.site === 'YouTube');
+    const trailerKey  = trailer?.key ?? null;
+    return { title, overview, posterUrl, trailerKey };
+  } catch {
+    return null;
+  }
+}
 
-export default function ShowRedirect() {
-  const params  = useParams();
-  const tmdbId  = params?.tmdbId as string;
-  const type    = params?.type as string;
-  const [status, setStatus] = useState<'trying' | 'redirecting'>('trying');
+export async function generateMetadata(
+  { params }: { params: { tmdbId: string; type: string } }
+): Promise<Metadata> {
+  const { tmdbId, type } = params;
+  const show = await fetchShowData(tmdbId, type);
+  const title       = show?.title ?? 'Check out this title on LogIT';
+  const description = show?.overview
+    ? show.overview.slice(0, 200)
+    : 'Track TV shows and movies together with your household.';
+  const imageUrl    = show?.posterUrl ?? `${SITE_URL}/icon.png`;
+  const pageUrl     = `${SITE_URL}/show/${tmdbId}/${type}`;
 
-  useEffect(() => {
-    if (!tmdbId || !type) return;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: pageUrl,
+      siteName: 'LogIT: TV & Movie Tracker',
+      images: [{ url: imageUrl, width: 500, height: 750, alt: title }],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [imageUrl],
+    },
+  };
+}
 
-    const isAndroid = /android/i.test(navigator.userAgent);
-    const isIOS     = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const storeUrl  = isAndroid ? PLAY_STORE_URL : APP_STORE_URL;
-    const deepLink  = `logit://show/${tmdbId}/${type}`;
-
-    if (isIOS || isAndroid) {
-      // Try to open the app via deep link
-      window.location.href = deepLink;
-
-      // If app isn't installed, deep link silently fails — fall back to store after delay
-      const timer = setTimeout(() => {
-        setStatus('redirecting');
-        window.location.href = storeUrl;
-      }, 1500);
-
-      return () => clearTimeout(timer);
-    } else {
-      // Desktop — just show the store links
-      setStatus('redirecting');
-    }
-  }, [tmdbId, type]);
+export default async function ShowPage(
+  { params }: { params: { tmdbId: string; type: string } }
+) {
+  const { tmdbId, type } = params;
+  const show = await fetchShowData(tmdbId, type);
 
   return (
-    <main style={{
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-      maxWidth: 480,
-      margin: '0 auto',
-      padding: '80px 24px',
-      textAlign: 'center',
-      color: '#1a1a1a',
-    }}>
-      <p style={{ fontSize: 13, color: '#888', marginBottom: 8, letterSpacing: 1 }}>LOGIT: TV & MOVIE TRACKER</p>
-      <h1 style={{ fontSize: 28, fontWeight: 800, marginBottom: 12 }}>
-        {status === 'trying' ? 'Opening LogIT…' : 'Get LogIT'}
-      </h1>
-      <p style={{ fontSize: 16, color: '#555', marginBottom: 40 }}>
-        {status === 'trying'
-          ? 'If the app doesn\'t open, download it below.'
-          : 'Track TV shows and movies together with your household.'}
-      </p>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
-        <a
-          href={APP_STORE_URL}
-          style={{
-            background: '#000',
-            color: '#fff',
-            padding: '14px 32px',
-            borderRadius: 12,
-            textDecoration: 'none',
-            fontWeight: 700,
-            fontSize: 16,
-            width: 220,
-            display: 'block',
-          }}
-        >
-          Download on iOS
-        </a>
-        <a
-          href={PLAY_STORE_URL}
-          style={{
-            background: '#1a73e8',
-            color: '#fff',
-            padding: '14px 32px',
-            borderRadius: 12,
-            textDecoration: 'none',
-            fontWeight: 700,
-            fontSize: 16,
-            width: 220,
-            display: 'block',
-          }}
-        >
-          Get it on Android
-        </a>
-      </div>
-    </main>
+    <ShowRedirect
+      tmdbId={tmdbId}
+      type={type}
+      title={show?.title ?? ''}
+      overview={show?.overview ?? ''}
+      posterUrl={show?.posterUrl ?? null}
+      trailerKey={show?.trailerKey ?? null}
+    />
   );
 }
