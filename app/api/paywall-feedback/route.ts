@@ -6,6 +6,8 @@ const ALLOWED_REASONS = new Set([
   'too_complicated',
   'app_not_working',
   'just_browsing',
+  'suggest_feature',
+  'general_feedback',
 ]);
 
 const ALLOWED_PLATFORMS = new Set(['ios', 'android']);
