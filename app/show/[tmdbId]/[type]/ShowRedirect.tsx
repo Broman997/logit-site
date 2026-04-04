@@ -35,51 +35,13 @@ export default function ShowRedirect({
       textAlign: 'center',
       color: '#1a1a1a',
     }}>
-      <p style={{ fontSize: 13, color: '#888', marginBottom: 8, letterSpacing: 1 }}>LOGIT: TV & MOVIE TRACKER</p>
+      <p style={{ fontSize: 13, color: '#888', marginBottom: 16, letterSpacing: 1 }}>LOGIT: TV & MOVIE TRACKER</p>
 
-      {posterUrl && (
-        <img
-          src={posterUrl}
-          alt={title}
-          style={{ width: 140, borderRadius: 12, marginBottom: 20, boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }}
-        />
-      )}
-
-      <h1 style={{ fontSize: 26, fontWeight: 800, marginBottom: 8 }}>{title}</h1>
-      {overview && (
-        <p style={{ fontSize: 14, color: '#555', marginBottom: 24, lineHeight: 1.5 }}>
-          {overview.length > 160 ? overview.slice(0, 160) + '…' : overview}
-        </p>
-      )}
-
-      {trailerKey && (
-        <a
-          href={`https://www.youtube.com/watch?v=${trailerKey}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-block',
-            marginBottom: 28,
-            background: '#ff0000',
-            color: '#fff',
-            padding: '10px 24px',
-            borderRadius: 8,
-            textDecoration: 'none',
-            fontWeight: 700,
-            fontSize: 14,
-          }}
-        >
-          ▶ Watch Trailer
-        </a>
-      )}
-
-      <p style={{ fontSize: 16, color: '#555', marginBottom: 24 }}>
-        {status === 'trying'
-          ? 'Opening LogIT…'
-          : 'Add it to your LogIT watchlist:'}
+      {/* Download buttons — prominent at top */}
+      <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a1a', marginBottom: 12 }}>
+        Track this with your household — free!
       </p>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginBottom: 24 }}>
         <a href={APP_STORE_URL} style={{
           background: '#000', color: '#fff', padding: '14px 32px',
           borderRadius: 12, textDecoration: 'none', fontWeight: 700, fontSize: 16, width: 220, display: 'block',
@@ -93,6 +55,48 @@ export default function ShowRedirect({
           Get it on Android
         </a>
       </div>
+
+      {/* Divider */}
+      <hr style={{ border: 'none', borderTop: '1px solid #eee', marginBottom: 24 }} />
+
+      {/* Show info */}
+      <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', textAlign: 'left', marginBottom: 20 }}>
+        {posterUrl && (
+          <img
+            src={posterUrl}
+            alt={title}
+            style={{ width: 90, borderRadius: 10, flexShrink: 0, boxShadow: '0 4px 20px rgba(0,0,0,0.2)' }}
+          />
+        )}
+        <div>
+          <h1 style={{ fontSize: 20, fontWeight: 800, marginBottom: 6, marginTop: 0 }}>{title}</h1>
+          {overview && (
+            <p style={{ fontSize: 13, color: '#555', lineHeight: 1.5, margin: 0 }}>
+              {overview.length > 160 ? overview.slice(0, 160) + '…' : overview}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {trailerKey && (
+        <a
+          href={`https://www.youtube.com/watch?v=${trailerKey}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-block',
+            background: '#ff0000',
+            color: '#fff',
+            padding: '10px 24px',
+            borderRadius: 8,
+            textDecoration: 'none',
+            fontWeight: 700,
+            fontSize: 14,
+          }}
+        >
+          ▶ Watch Trailer
+        </a>
+      )}
     </main>
   );
 }
