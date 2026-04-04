@@ -30,11 +30,27 @@ export default function ShowRedirect({
 
     if (isIOS || isAndroid) {
       window.location.href = deepLink;
-      const timer = setTimeout(() => {
-        setStatus('redirecting');
-        window.location.href = storeUrl;
-      }, 1500);
-      return () => clearTimeout(timer);
+
+      let timer: ReturnType<typeof setTimeout>;
+
+      const onVisibilityChange = () => {
+        // User switched away (app opened) — cancel the store redirect
+        if (document.hidden) clearTimeout(timer);
+      };
+      document.addEventListener('visibilitychange', onVisibilityChange);
+
+      timer = setTimeout(() => {
+        // Only redirect to store if the page is still visible (app didn't open)
+        if (!document.hidden) {
+          setStatus('redirecting');
+          window.location.href = storeUrl;
+        }
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+      };
     } else {
       setStatus('redirecting');
     }
