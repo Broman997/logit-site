@@ -35,7 +35,7 @@ export default function ShowRedirect({
       textAlign: 'center',
       color: '#1a1a1a',
     }}>
-      <p style={{ fontSize: 13, color: '#888', marginBottom: 16, letterSpacing: 1 }}>LOGIT: TV & MOVIE TRACKER</p>
+      <p style={{ fontSize: 18, fontWeight: 800, color: '#1a1a1a', marginBottom: 16, letterSpacing: 2 }}>LOGIT: TV & MOVIE TRACKER</p>
 
       {/* Download buttons — prominent at top */}
       <p style={{ fontSize: 20, fontWeight: 800, color: '#1a1a1a', marginBottom: 12 }}>
