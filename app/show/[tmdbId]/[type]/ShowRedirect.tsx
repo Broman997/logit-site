@@ -6,8 +6,6 @@ const APP_STORE_URL  = 'https://apps.apple.com/app/id6760734928';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=ca.logit.app';
 
 export default function ShowRedirect({
-  tmdbId,
-  type,
   title,
   overview,
   posterUrl,
@@ -23,22 +21,10 @@ export default function ShowRedirect({
   const [status, setStatus] = useState<'trying' | 'redirecting'>('trying');
 
   useEffect(() => {
-    const isAndroid = /android/i.test(navigator.userAgent);
-    const isIOS     = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const storeUrl  = isAndroid ? PLAY_STORE_URL : APP_STORE_URL;
-    const deepLink  = `logit://show/${tmdbId}/${type}`;
-
-    if (isIOS || isAndroid) {
-      // Try to open the app — if it's installed, universal links will have already
-      // handled this before the page loaded, so this is a fallback for the custom scheme
-      window.location.href = deepLink;
-      // Don't auto-redirect to the store — let the user stay on this page
-      // which has the store buttons if they need to download the app
-      setStatus('redirecting');
-    } else {
-      setStatus('redirecting');
-    }
-  }, [tmdbId, type]);
+    // Universal links handle opening the app automatically if installed —
+    // no need to try the custom scheme which causes a Safari error if app isn't installed.
+    setStatus('redirecting');
+  }, []);
 
   return (
     <main style={{
