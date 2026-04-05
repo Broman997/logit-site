@@ -46,6 +46,8 @@ export async function POST(req: NextRequest) {
   const timestamp  = typeof body.timestamp  === 'string' ? body.timestamp.trim()  : null;
   const details    = typeof body.details    === 'string' && body.details.trim().length > 0
     ? body.details.trim().slice(0, 2000) : null;
+  const email      = typeof body.email      === 'string' && body.email.trim().length > 0
+    ? body.email.trim().slice(0, 254) : null;
 
   if (!reason || !platform || !timestamp) {
     return cors(NextResponse.json({ error: 'Invalid payload' }, { status: 400 }));
@@ -68,6 +70,7 @@ export async function POST(req: NextRequest) {
       app_name:    'logit',
       reason,
       details,
+      email,
       platform,
       app_version: appVersion,
       created_at:  createdAt.toISOString(),
