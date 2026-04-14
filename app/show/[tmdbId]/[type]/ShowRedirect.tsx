@@ -6,6 +6,8 @@ const APP_STORE_URL  = 'https://apps.apple.com/app/id6760734928';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=ca.logit.app';
 
 export default function ShowRedirect({
+  tmdbId,
+  type,
   title,
   overview,
   posterUrl,
@@ -55,6 +57,21 @@ export default function ShowRedirect({
           Get it on Android
         </a>
       </div>
+
+      {/* Already have the app */}
+      <a
+        href={`logit://add?tmdb_id=${tmdbId}&type=${type}`}
+        style={{
+          display: 'block',
+          marginBottom: 24,
+          color: '#39FF5A',
+          fontWeight: 700,
+          fontSize: 15,
+          textDecoration: 'none',
+        }}
+      >
+        Already have LogIT? Tap to add this title →
+      </a>
 
       {/* Divider */}
       <hr style={{ border: 'none', borderTop: '1px solid #eee', marginBottom: 24 }} />
