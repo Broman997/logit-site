@@ -39,7 +39,17 @@ export default function ShowRedirect({
     }}>
       <p style={{ fontSize: 18, fontWeight: 800, color: '#1a1a1a', marginBottom: 16, letterSpacing: 2 }}>LOGIT: TV & MOVIE TRACKER</p>
 
-      {/* Download buttons — prominent at top */}
+      {/* Already have the app */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 16 }}>
+        <a href={`logit://add?tmdb_id=${tmdbId}&type=${type}`} style={{
+          background: '#39FF5A', color: '#000', padding: '14px 32px',
+          borderRadius: 12, textDecoration: 'none', fontWeight: 700, fontSize: 16, width: 220, display: 'block',
+        }}>
+          Already have LogIT? Add this title
+        </a>
+      </div>
+
+      {/* Download buttons */}
       <p style={{ fontSize: 20, fontWeight: 800, color: '#1a1a1a', marginBottom: 12 }}>
         Don't have the LogIT app? Download it here!
       </p>
@@ -57,21 +67,6 @@ export default function ShowRedirect({
           Get it on Android
         </a>
       </div>
-
-      {/* Already have the app */}
-      <a
-        href={`logit://add?tmdb_id=${tmdbId}&type=${type}`}
-        style={{
-          display: 'block',
-          marginBottom: 24,
-          color: '#39FF5A',
-          fontWeight: 700,
-          fontSize: 15,
-          textDecoration: 'none',
-        }}
-      >
-        Already have LogIT? Tap to add this title →
-      </a>
 
       {/* Divider */}
       <hr style={{ border: 'none', borderTop: '1px solid #eee', marginBottom: 24 }} />
