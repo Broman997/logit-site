@@ -54,11 +54,11 @@ export default function ShowRedirect({
         Don't have the LogIT app? Download it here!
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginBottom: 24 }}>
-        <a href={APP_STORE_URL} style={{ display: 'inline-block', textDecoration: 'none' }}>
-          <img src="/assets/badges/apple-app-store.svg" alt="Download on the App Store" style={{ height: 52, display: 'block' }} />
+        <a href={APP_STORE_URL} style={{ display: 'block', width: 200, height: 60, textDecoration: 'none' }}>
+          <img src="/assets/badges/apple-app-store.svg" alt="Download on the App Store" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
         </a>
-        <a href={PLAY_STORE_URL} style={{ display: 'inline-block', textDecoration: 'none' }}>
-          <img src="/assets/badges/google-play.svg" alt="Get it on Google Play" style={{ height: 52, display: 'block' }} />
+        <a href={PLAY_STORE_URL} style={{ display: 'block', width: 200, height: 60, textDecoration: 'none' }}>
+          <img src="/assets/badges/google-play.svg" alt="Get it on Google Play" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
         </a>
       </div>
 
