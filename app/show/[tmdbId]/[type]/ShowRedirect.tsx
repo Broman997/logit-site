@@ -42,7 +42,7 @@ export default function ShowRedirect({
       {/* Already have the app */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 16 }}>
         <a href={`logit://add?tmdb_id=${tmdbId}&type=${type}`} style={{
-          background: '#39FF5A', color: '#000', padding: '14px 32px',
+          background: 'linear-gradient(to right, #034078, #1282A2)', color: '#fff', padding: '14px 32px',
           borderRadius: 12, textDecoration: 'none', fontWeight: 700, fontSize: 16, width: 220, display: 'block',
         }}>
           Already have LogIT? Add this title
@@ -54,17 +54,11 @@ export default function ShowRedirect({
         Don't have the LogIT app? Download it here!
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginBottom: 24 }}>
-        <a href={APP_STORE_URL} style={{
-          background: '#000', color: '#fff', padding: '14px 32px',
-          borderRadius: 12, textDecoration: 'none', fontWeight: 700, fontSize: 16, width: 220, display: 'block',
-        }}>
-          Download on iOS
+        <a href={APP_STORE_URL} style={{ display: 'inline-block', textDecoration: 'none' }}>
+          <img src="/assets/badges/apple-app-store.svg" alt="Download on the App Store" style={{ height: 52, display: 'block' }} />
         </a>
-        <a href={PLAY_STORE_URL} style={{
-          background: '#1a73e8', color: '#fff', padding: '14px 32px',
-          borderRadius: 12, textDecoration: 'none', fontWeight: 700, fontSize: 16, width: 220, display: 'block',
-        }}>
-          Get it on Android
+        <a href={PLAY_STORE_URL} style={{ display: 'inline-block', textDecoration: 'none' }}>
+          <img src="/assets/badges/google-play.svg" alt="Get it on Google Play" style={{ height: 52, display: 'block' }} />
         </a>
       </div>
 
