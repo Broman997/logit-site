@@ -45,7 +45,7 @@ export default function ShowRedirect({
           background: 'linear-gradient(to right, #034078, #1282A2)', color: '#fff', padding: '14px 32px',
           borderRadius: 12, textDecoration: 'none', fontWeight: 700, fontSize: 16, width: 220, display: 'block',
         }}>
-          Already have LogIT? Add this title
+          Already have LogIT?<br />Add this title
         </a>
       </div>
 
