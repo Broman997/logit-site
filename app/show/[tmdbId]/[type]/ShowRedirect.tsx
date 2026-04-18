@@ -103,6 +103,14 @@ export default function ShowRedirect({
           ▶ Watch Trailer
         </a>
       )}
+
+      <p style={{ fontSize: 12, color: '#aaaaaa', marginTop: 40 }}>
+        From the makers of{' '}
+        <a href="https://keymatchpro.ca" target="_blank" rel="noopener noreferrer" style={{ color: '#888888' }}>
+          KeyMatchPro
+        </a>
+        {' '}— the app that solves the mystery key problem
+      </p>
     </main>
   );
 }
