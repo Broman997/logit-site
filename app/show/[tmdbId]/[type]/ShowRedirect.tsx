@@ -33,7 +33,7 @@ export default function ShowRedirect({
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       maxWidth: 480,
       margin: '0 auto',
-      padding: '60px 24px',
+      padding: '28px 24px',
       textAlign: 'center',
       color: '#1a1a1a',
     }}>
@@ -104,9 +104,9 @@ export default function ShowRedirect({
         </a>
       )}
 
-      <p style={{ fontSize: 12, color: '#aaaaaa', marginTop: 40 }}>
+      <p style={{ fontSize: 13, color: '#666666', marginTop: 36, borderTop: '1px solid #eee', paddingTop: 20 }}>
         From the makers of{' '}
-        <a href="https://keymatchpro.ca" target="_blank" rel="noopener noreferrer" style={{ color: '#888888' }}>
+        <a href="https://keymatchpro.ca" target="_blank" rel="noopener noreferrer" style={{ color: '#034078', fontWeight: 700, textDecoration: 'underline' }}>
           KeyMatchPro
         </a>
         {' '}— the app that solves the mystery key problem
