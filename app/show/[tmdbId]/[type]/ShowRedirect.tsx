@@ -63,7 +63,15 @@ export default function ShowRedirect({
       </div>
 
       {/* Divider */}
-      <hr style={{ border: 'none', borderTop: '1px solid #eee', marginBottom: 24 }} />
+      <hr style={{ border: 'none', borderTop: '1px solid #eee', marginBottom: 16 }} />
+
+      <p style={{ fontSize: 13, color: '#666666', margin: '0 0 16px' }}>
+        From the makers of{' '}
+        <a href="https://keymatchpro.ca" target="_blank" rel="noopener noreferrer" style={{ color: '#034078', fontWeight: 700, textDecoration: 'underline' }}>
+          KeyMatchPro
+        </a>
+        {' '}— the app that solves the mystery key problem
+      </p>
 
       {/* Show info */}
       <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', textAlign: 'left', marginBottom: 20 }}>
@@ -104,13 +112,6 @@ export default function ShowRedirect({
         </a>
       )}
 
-      <p style={{ fontSize: 13, color: '#666666', marginTop: 36, borderTop: '1px solid #eee', paddingTop: 20 }}>
-        From the makers of{' '}
-        <a href="https://keymatchpro.ca" target="_blank" rel="noopener noreferrer" style={{ color: '#034078', fontWeight: 700, textDecoration: 'underline' }}>
-          KeyMatchPro
-        </a>
-        {' '}— the app that solves the mystery key problem
-      </p>
     </main>
   );
 }
