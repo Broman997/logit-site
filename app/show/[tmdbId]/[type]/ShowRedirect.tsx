@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const APP_STORE_URL  = 'https://apps.apple.com/app/id6760734928';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=ca.logit.app';
@@ -28,6 +28,7 @@ function track(eventType: string, properties: Record<string, unknown> = {}) {
     fetch(TRACK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${ANON_KEY}` },
+      keepalive: true, // survives page navigation / link clicks
       body: JSON.stringify({
         event_type: eventType,
         user_id: deviceId,
@@ -53,10 +54,7 @@ export default function ShowRedirect({
   posterUrl: string | null;
   trailerKey: string | null;
 }) {
-  const [status, setStatus] = useState<'trying' | 'redirecting'>('trying');
-
   useEffect(() => {
-    setStatus('redirecting');
     track('share_page_viewed', { tmdb_id: tmdbId, media_type: type });
   }, []);
 
