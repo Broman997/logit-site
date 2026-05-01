@@ -39,7 +39,12 @@ export default function DeleteAccount() {
       </section>
 
       <hr style={{ borderColor: '#eee', marginBottom: 32 }} />
-      <p style={{ fontSize: 13, color: '#aaa' }}>&copy; {new Date().getFullYear()} LogIt: TV &amp; Movie Tracker. All rights reserved.</p>
+      <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginBottom: 16 }}>
+        <a href="/" style={{ fontSize: 13, color: '#888', textDecoration: 'none' }}>← Home</a>
+        <a href="/privacy" style={{ fontSize: 13, color: '#888', textDecoration: 'none' }}>Privacy Policy</a>
+        <a href="/terms" style={{ fontSize: 13, color: '#888', textDecoration: 'none' }}>Terms of Service</a>
+      </div>
+      <p style={{ fontSize: 13, color: '#aaa' }}>&copy; {new Date().getFullYear()} LogIT: TV &amp; Movie Tracker &mdash; <a href="https://www.logitapp.ca" style={{ color: '#aaa' }}>logitapp.ca</a>. All rights reserved.</p>
     </main>
   );
 }

@@ -8,7 +8,11 @@ export default function Home() {
       </p>
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
         <a href="/privacy" style={{ background: '#1a1a1a', color: '#fff', padding: '12px 24px', borderRadius: 8, textDecoration: 'none', fontWeight: 600 }}>Privacy Policy</a>
+        <a href="/terms" style={{ background: '#1a1a1a', color: '#fff', padding: '12px 24px', borderRadius: 8, textDecoration: 'none', fontWeight: 600 }}>Terms of Service</a>
+        <a href="/delete-account" style={{ background: '#1a1a1a', color: '#fff', padding: '12px 24px', borderRadius: 8, textDecoration: 'none', fontWeight: 600 }}>Delete Account</a>
       </div>
+      <hr style={{ borderColor: '#eee', margin: '48px 0 24px' }} />
+      <p style={{ fontSize: 13, color: '#aaa' }}>&copy; {new Date().getFullYear()} LogIT: TV &amp; Movie Tracker &mdash; <a href="https://www.logitapp.ca" style={{ color: '#aaa' }}>logitapp.ca</a>. All rights reserved.</p>
     </main>
   );
 }

@@ -134,7 +134,7 @@ export default function DownloadPage() {
 
         {/* Footer */}
         <p style={{ fontSize: 12, color: '#3a4a5a', marginTop: 40 }}>
-          © 2026 LogIT · <a href="/privacy" style={{ color: '#3a4a5a' }}>Privacy Policy</a>
+          © 2026 LogIT · <a href="/" style={{ color: '#3a4a5a' }}>Home</a> · <a href="/privacy" style={{ color: '#3a4a5a' }}>Privacy Policy</a> · <a href="/terms" style={{ color: '#3a4a5a' }}>Terms of Service</a>
         </p>
       </div>
     </main>
