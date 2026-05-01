@@ -5,8 +5,7 @@ import { useEffect } from 'react';
 const APP_STORE_URL  = 'https://apps.apple.com/app/id6760734928';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=ca.logit.app';
 
-const TRACK_URL  = 'https://kwdhdmofjocwhpbujrow.supabase.co/functions/v1/track-logit-event';
-const ANON_KEY   = 'sb_publishable_WJzahivXbx2TD3wHBhzzrg_V0-6imjq';
+const TRACK_URL = 'https://byfmmmzintpwqgadabzb.supabase.co/functions/v1/track-logit-event';
 
 function getDeviceId(): string {
   try {
@@ -27,7 +26,7 @@ function track(eventType: string, properties: Record<string, unknown> = {}) {
     const deviceId = getDeviceId();
     fetch(TRACK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${ANON_KEY}` },
+      headers: { 'Content-Type': 'application/json' },
       keepalive: true, // survives page navigation / link clicks
       body: JSON.stringify({
         event_type: eventType,
