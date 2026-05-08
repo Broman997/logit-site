@@ -4,6 +4,10 @@ import { useEffect } from 'react';
 
 const APP_STORE_URL  = 'https://apps.apple.com/app/id6760734928';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=ca.logit.app';
+const IOS_OFFER_URL  = 'https://apps.apple.com/redeem?ctx=offercodes&id=6760734928&code=LOGITLAUNCH';
+const SHOW_IOS_OFFER = true;
+const SHOW_GOOGLE_PLAY_BADGE = false;
+const SHOW_KEYMATCH_CREDIT = false;
 
 const TRACK_URL = 'https://byfmmmzintpwqgadabzb.supabase.co/functions/v1/track-logit-event';
 
@@ -87,6 +91,22 @@ export default function ShowRedirect({
         Don't have the LogIT app? Download it here!
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginBottom: 24 }}>
+        {/* iOS launch offer promo start */}
+        {SHOW_IOS_OFFER && (
+          <a
+            href={IOS_OFFER_URL}
+            onClick={() => track('share_ios_offer_redeem_tapped', { tmdb_id: tmdbId, media_type: type, code: 'LOGITLAUNCH' })}
+            style={{
+              color: '#1282A2',
+              fontSize: 14,
+              fontWeight: 800,
+              textDecoration: 'underline',
+              marginBottom: -2,
+            }}
+          >
+            Limited-time iPhone/iPad offer: redeem Pro for free
+          </a>
+        )}
         <a
           href={APP_STORE_URL}
           onClick={() => track('share_appstore_tapped', { platform: 'ios', tmdb_id: tmdbId, media_type: type })}
@@ -94,19 +114,26 @@ export default function ShowRedirect({
         >
           <img src="/assets/badges/apple-app-store.svg" alt="Download on the App Store" style={{ height: 52, width: 'auto', display: 'block' }} />
         </a>
-        <a
-          href={PLAY_STORE_URL}
-          onClick={() => track('share_appstore_tapped', { platform: 'android', tmdb_id: tmdbId, media_type: type })}
-          style={{ textDecoration: 'none' }}
-        >
-          <img src="/assets/badges/google-play.svg" alt="Get it on Google Play" style={{ height: 52, width: 'auto', display: 'block' }} />
-        </a>
+        {/* iOS launch offer promo end */}
+        {SHOW_GOOGLE_PLAY_BADGE ? (
+          <a
+            href={PLAY_STORE_URL}
+            onClick={() => track('share_appstore_tapped', { platform: 'android', tmdb_id: tmdbId, media_type: type })}
+            style={{ textDecoration: 'none' }}
+          >
+            <img src="/assets/badges/google-play.svg" alt="Get it on Google Play" style={{ height: 52, width: 'auto', display: 'block' }} />
+          </a>
+        ) : (
+          <p style={{ margin: '-2px 0 0', fontSize: 12, color: '#777777', fontWeight: 700 }}>
+            Coming soon to Google Play
+          </p>
+        )}
       </div>
 
       {/* Divider */}
       <hr style={{ border: 'none', borderTop: '1px solid #eee', marginBottom: 16 }} />
 
-      <p style={{ fontSize: 13, color: '#666666', margin: '0 0 16px' }}>
+      {SHOW_KEYMATCH_CREDIT && <p style={{ fontSize: 13, color: '#666666', margin: '0 0 16px' }}>
         From the makers of{' '}
         <a
           href="https://keymatchpro.ca"
@@ -118,7 +145,7 @@ export default function ShowRedirect({
           KeyMatchPro
         </a>
         {' '}— the app that solves the mystery key problem
-      </p>
+      </p>}
 
       {/* Show info */}
       <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', textAlign: 'left', marginBottom: 20 }}>
