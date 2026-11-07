@@ -3,7 +3,7 @@ export default function PrivacyPolicy() {
     <main style={{ fontFamily: 'Georgia, serif', maxWidth: 720, margin: '0 auto', padding: '48px 24px', color: '#1a1a1a', lineHeight: 1.7 }}>
       <p style={{ fontSize: 13, color: '#888', marginBottom: 8 }}>LOGIT: TV & MOVIE TRACKER</p>
       <h1 style={{ fontSize: 36, fontWeight: 800, marginBottom: 8, lineHeight: 1.2 }}>Privacy Policy</h1>
-      <p style={{ color: '#666', marginBottom: 40 }}>Last updated: April 2, 2026</p>
+      <p style={{ color: '#666', marginBottom: 40 }}>Last updated: November 7, 2026</p>
 
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Overview</h2>
@@ -26,15 +26,34 @@ export default function PrivacyPolicy() {
           <li><strong>Netflix viewing history:</strong> If you choose to import it, your Netflix CSV export is stored to enable &ldquo;have I seen this?&rdquo; queries.</li>
           <li><strong>Voice recordings:</strong> When you use voice logging, audio is sent to OpenAI&apos;s Whisper API for transcription. Audio is not stored by us after transcription.</li>
           <li><strong>Group data:</strong> Your group name and the display names of members you invite.</li>
+          <li><strong>Usage analytics:</strong> When you are signed in, the app records how features are used (for example, which screens you open and what you log), linked to your account ID, with a session ID, your device model, operating system version, platform and app version. We use this to fix problems and improve LogIT. In current app versions, these records also include your approximate country, province or state, and city, estimated by our hosting provider (Vercel) from the network address your app connects from. This is not GPS location and can be inaccurate, for example on mobile networks or VPNs. We do not store your IP address in these records.</li>
+          <li><strong>Feedback:</strong> Answers you choose to give in in-app surveys and feedback forms.</li>
         </ul>
         <p style={{ marginTop: 12 }}>All data is stored securely in Supabase (PostgreSQL), with row-level security ensuring each group can only access its own data.</p>
+      </section>
+
+      <section style={{ marginBottom: 40 }}>
+        <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Advertising</h2>
+        <p>
+          The free version of LogIT shows banner ads from Google AdMob. To show and measure ads, Google may collect your device&apos;s
+          advertising identifier, your approximate location based on your IP address, and information about how you interact with ads.
+          This is described in{' '}
+          <a href="https://policies.google.com/technologies/partner-sites" style={{ color: '#0070f3' }}>how Google uses information from apps that use its services</a>.
+        </p>
+        <ul style={{ paddingLeft: 20, marginTop: 12 }}>
+          <li><strong>iPhone and iPad:</strong> LogIT asks for permission to track. If you allow it, ads may be personalized. If you don&apos;t, you only see non-personalized ads. You can change this at any time in Settings &rarr; Privacy &amp; Security &rarr; Tracking.</li>
+          <li><strong>Android:</strong> Ads may be personalized using your advertising ID. You can reset or delete your advertising ID, or opt out of personalized ads, in your device&apos;s Settings &rarr; Google &rarr; Ads (or Settings &rarr; Privacy &rarr; Ads).</li>
+        </ul>
+        <p style={{ marginTop: 12 }}>LogIT itself does not receive your advertising identifier, and we never give your watch history, email or group data to advertisers.</p>
       </section>
 
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>App Permissions</h2>
         <ul style={{ paddingLeft: 20 }}>
           <li><strong>Microphone:</strong> Used only when you tap the voice logging button. Audio is sent to OpenAI for transcription and is not stored by LogIT.</li>
+          <li><strong>Tracking (iPhone and iPad):</strong> Used only to decide whether ads may be personalized, as described under Advertising.</li>
         </ul>
+        <p style={{ marginTop: 12 }}>LogIT does not request GPS location, contacts or camera access.</p>
       </section>
 
       <section style={{ marginBottom: 40 }}>
@@ -44,6 +63,9 @@ export default function PrivacyPolicy() {
           <li><strong>OpenAI:</strong> Voice transcription (Whisper) and AI-powered Q&amp;A and recommendations (GPT-4o-mini). Requests are proxied through our server; your OpenAI API key is never exposed to the app.</li>
           <li><strong>TMDB (The Movie Database):</strong> Movie and TV show metadata, posters, and trailers are sourced from the TMDB API. This product uses the TMDB API but is not endorsed or certified by TMDB.</li>
           <li><strong>RevenueCat:</strong> In-app purchase and subscription management for LogIT Pro. Payment information is processed by Apple or Google and is not received directly by LogIT.</li>
+          <li><strong>Google AdMob:</strong> Banner ads in the free version, as described under Advertising.</li>
+          <li><strong>YouTube:</strong> Trailers play in an embedded YouTube player, so YouTube receives information about trailer playback under Google&apos;s privacy policy.</li>
+          <li><strong>Cloudflare R2 and GitHub:</strong> Encrypted backups of our database are created by an automated job on GitHub and stored in Cloudflare R2. Backups are encrypted before they leave the job, and only we hold the key.</li>
         </ul>
       </section>
 
@@ -58,21 +80,22 @@ export default function PrivacyPolicy() {
 
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Data Sharing and Sale</h2>
-        <p>We do not sell your data. We do not share your data with third parties except as described above (Supabase, OpenAI, TMDB, RevenueCat) solely for the purpose of operating the app.</p>
+        <p>We do not sell your data. We share data only with the services described above, for operating the app and, in the free version, for showing ads through Google AdMob.</p>
       </section>
 
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Data Retention</h2>
         <p>
           We retain your data for as long as your account is active. If you delete your account or use the &ldquo;Delete My Data&rdquo; option in Settings,
-          your watch entries, imported history, and account information are permanently deleted from our systems.
-          Anonymized or aggregated data (such as app feedback responses with no personal identifiers) may be retained for product improvement purposes.
+          your watch entries, imported history, and account information are permanently deleted from our live systems.
+          Copies remain in our encrypted backups until those backups expire, normally within about three months; we use backups only to recover from data loss.
+          Usage analytics are kept to understand how LogIT is used over time. Anonymized or aggregated data (such as app feedback responses with no personal identifiers) may be retained for product improvement purposes.
         </p>
       </section>
 
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Deleting Your Data</h2>
-        <p>You can delete all your data at any time from within the app via Settings &rarr; Delete My Data. This permanently removes all your watch entries, imported history, and account information.</p>
+        <p>You can delete all your data at any time from within the app via Settings &rarr; Delete My Data. This permanently removes all your watch entries, imported history, and account information. To also ask us to delete your usage analytics, email us at <a href="mailto:logittracker@gmail.com" style={{ color: '#0070f3' }}>logittracker@gmail.com</a>.</p>
       </section>
 
       <section style={{ marginBottom: 40 }}>
