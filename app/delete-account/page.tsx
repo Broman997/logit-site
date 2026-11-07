@@ -30,10 +30,19 @@ export default function DeleteAccount() {
       </section>
 
       <section style={{ marginBottom: 40 }}>
+        <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>What is kept, and for how long</h2>
+        <ul style={{ paddingLeft: 20 }}>
+          <li>Encrypted backups of our database still contain your data until they expire, normally within about three months. Backups are used only to recover from data loss.</li>
+          <li>Usage analytics (how features were used, device model, app version and approximate location) are kept to understand how LogIT is used. Email us to have them deleted too.</li>
+          <li>Purchase records for LogIT Pro are kept by Apple or Google and by RevenueCat, as required for billing and taxes.</li>
+        </ul>
+      </section>
+
+      <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Need help?</h2>
         <p>
           If you are unable to access the app, email us at{' '}
-          <a href="mailto:logitapp@gmail.com" style={{ color: '#0070f3' }}>logitapp@gmail.com</a>{' '}
+          <a href="mailto:logittracker@gmail.com" style={{ color: '#0070f3' }}>logittracker@gmail.com</a>{' '}
           and we will delete your account manually within 7 days.
         </p>
       </section>
