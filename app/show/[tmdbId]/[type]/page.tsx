@@ -30,9 +30,9 @@ async function fetchShowData(tmdbId: string, type: string) {
 }
 
 export async function generateMetadata(
-  { params }: { params: { tmdbId: string; type: string } }
+  { params }: { params: Promise<{ tmdbId: string; type: string }> }
 ): Promise<Metadata> {
-  const { tmdbId, type } = params;
+  const { tmdbId, type } = await params;
   const show = await fetchShowData(tmdbId, type);
   const title       = show?.title ?? 'Check out this title on LogIT';
   const description = show?.overview
@@ -65,9 +65,9 @@ export async function generateMetadata(
 }
 
 export default async function ShowPage(
-  { params }: { params: { tmdbId: string; type: string } }
+  { params }: { params: Promise<{ tmdbId: string; type: string }> }
 ) {
-  const { tmdbId, type } = params;
+  const { tmdbId, type } = await params;
   const show = await fetchShowData(tmdbId, type);
 
   return (
